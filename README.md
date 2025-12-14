@@ -1,16 +1,26 @@
 # Terraform AWS VPC
 
-This repository contains Terraform code to provision a custom AWS Virtual Private Cloud (VPC).
-It demonstrates core AWS networking concepts implemented using Infrastructure as Code (IaC).
+This repository contains Terraform code to provision an AWS Virtual Private Cloud (VPC)
+with a clear separation of public and private networking components.
+
+The project demonstrates practical AWS networking fundamentals implemented using
+Infrastructure as Code (IaC).
 
 ---
 
 ## Overview
 
-The project creates a basic but production-aligned VPC setup with clear separation between
-public and private networking components.
+The goal of this project is to build a basic yet production-aligned VPC setup using Terraform.
+It focuses on explicit routing, subnet isolation, and clean infrastructure design.
 
-The focus is on **intentional network design**, explicit routing, and clean Terraform practices.
+This VPC can act as a foundation for workloads such as EC2, ALB, NAT Gateway, and other
+AWS services.
+
+---
+
+## Architecture
+
+![AWS VPC Resource Map](screenshots/vpc.png)
 
 ---
 
@@ -30,16 +40,16 @@ The focus is on **intentional network design**, explicit routing, and clean Terr
 
 ### VPC
 - CIDR block: `10.0.0.0/16`
-- Serves as the isolated network boundary
+- Acts as the network boundary for all resources
 
 ### Public Subnet
-- CIDR: `10.0.0.0/24`
+- CIDR block: `10.0.0.0/24`
 - Availability Zone: `ap-south-1a`
 - Associated with a route table that routes traffic to an Internet Gateway
-- Public IPs are expected to be managed using Elastic IPs
+- Public IPs are managed using Elastic IPs (auto-assign disabled)
 
 ### Private Subnet
-- CIDR: `10.0.1.0/24`
+- CIDR block: `10.0.1.0/24`
 - Availability Zone: `ap-south-1b`
 - Associated with a private route table
 - No direct internet access
@@ -62,10 +72,9 @@ The focus is on **intentional network design**, explicit routing, and clean Terr
 
 ---
 
-## How to Run
+## How to Use
 
 ```bash
 terraform init
 terraform plan
 terraform apply
-
