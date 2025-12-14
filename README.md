@@ -20,7 +20,7 @@ AWS services.
 
 ## Architecture
 
-![AWS VPC Resource Map](screenshots/vpc.png)
+![AWS VPC Resource Map](screenshot/vpc.png)
 
 ---
 
